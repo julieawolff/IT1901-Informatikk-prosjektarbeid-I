@@ -1,0 +1,42 @@
+@startuml Package Diagram
+
+component core {
+	package greenhouse.core
+	package greenhouse.json
+}
+
+greenhouse.core ..> greenhouse.json
+component jackson {
+}
+
+greenhouse.json ..> jackson
+
+
+component fxui {
+	package greenhouse.ui
+}
+
+greenhouse.ui ..> springboot
+greenhouse.ui ..> springboot
+
+component javafx {
+	component fxml {
+	}
+}
+
+fxui ..> javafx
+fxui ..> fxml
+
+
+component springboot {
+	package greenhouse.restserver
+}
+
+
+greenhouse.restserver ..> greenhouse.core
+greenhouse.restserver ..> greenhouse.json
+
+
+
+
+@enduml

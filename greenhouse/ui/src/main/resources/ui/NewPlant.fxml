@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.NewPlantController">
+   <children>
+      <Label id="newPlant" layoutX="82.0" layoutY="58.0" text="&quot;A beautiful plant is like having a friend around the house&quot; ">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5055401662049861" centerY="0.4857482185273159" radius="0.684971098265896">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.1743421107530594" green="0.3552631437778473" blue="0.22560307383537292" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.17499999701976776" green="0.3499999940395355" blue="0.22458332777023315" opacity="0.894837498664856" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.550804078578949" green="0.8684210777282715" blue="0.6355019211769104" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+      <TextField id="nickname" fx:id="nickname" layoutX="227.0" layoutY="135.0" prefHeight="26.0" prefWidth="191.0" promptText="Nickname..." />
+      <Label id="waterinterval" layoutX="229.0" layoutY="238.0" text="Waterinterval:" />
+      <Button id="addPlant" fx:id="addPlant" layoutX="227.0" layoutY="323.0" mnemonicParsing="false" onAction="#addPlantButtonPushed" prefHeight="26.0" prefWidth="191.0" text="Add plant" textFill="#215732" />
+      <Label id="waterinterval" fx:id="phase" layoutX="227.0" layoutY="171.0" text="Phase:" />
+      <ChoiceBox fx:id="numberOfDays" layoutX="227.0" layoutY="261.0" prefHeight="26.0" prefWidth="191.0" />
+      <ChoiceBox fx:id="phaseOptions" layoutX="227.0" layoutY="195.0" prefHeight="26.0" prefWidth="191.0" />
+      <Label id="waterinterval" fx:id="phase1" layoutX="227.0" layoutY="109.0" text="Nickname:" />
+      <ImageView fitHeight="189.0" fitWidth="126.0" layoutX="68.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/ui/tallPlant.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="189.0" fitWidth="126.0" layoutX="469.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/ui/tallPlant.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tallPlant1" fitHeight="189.0" fitWidth="143.0" layoutX="68.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@tallPlant.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tallPlant2" fitHeight="189.0" fitWidth="143.0" layoutX="478.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@tallPlant.jpeg" />
+         </image>
+      </ImageView>
+      <Button fx:id="returnToApp" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#returnToApp" text="Return" />
+   </children>
+</Pane>

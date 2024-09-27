@@ -1,0 +1,33 @@
+@startuml Sequence Diagram
+Actor User #SkyBlue
+title sequence diagram: add a new plant, with Remote Access and REST-APPLICATION
+
+participant RemoteAppController
+participant RemoteNewPlantController
+participant RemotePlantOverviewAccess
+participant PlantOverviewController
+participant Plant
+participant PlantOverview
+participant PlantOverviewService
+participant PlantPersistence
+participant JSon
+
+User -> RemoteAppController: Click on "New Plant"
+RemoteAppController -> RemoteNewPlantController: Opens window for adding new plant
+User -> RemoteNewPlantController: Add information about plant (name, phase, waterInterval)
+RemoteNewPlantController -> RemotePlantOverviewAccess: Build HttpRequest
+RemotePlantOverviewAccess -> PlantOverviewController: Sends POST() request as URI
+PlantOverviewController -> Plant: Make new plant
+Plant -> PlantOverviewController: Valid plant
+PlantOverviewController -> PlantOverview: Add valid plant to plant overview
+PlantOverviewController -> PlantOverviewService: Autosave the plant overview
+PlantOverviewService -> JSon: Writes updatet overview to file
+JSon -> PlantOverviewService: Read updatet overview from file
+PlantOverviewService -> PlantOverviewController: Updates plant overview
+PlantOverviewController -> RemotePlantOverviewAccess: Returns new plant
+RemotePlantOverviewAccess -> RemoteNewPlantController: Plant is added
+RemoteNewPlantController -> RemoteAppController: showOverview()
+RemoteNewPlantController -> RemoteAppController: Opens main window
+RemoteAppController -> User: Plant is now visible in the overview
+
+@enduml

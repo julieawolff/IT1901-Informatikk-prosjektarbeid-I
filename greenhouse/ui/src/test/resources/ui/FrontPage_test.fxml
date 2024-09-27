@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FrontPageController">
+   <children>
+      <fx:define>
+        <String fx:id="isTest" fx:value="true"/>
+      </fx:define>
+      <Button fx:id="startButton" layoutX="220.0" layoutY="256.0" mnemonicParsing="false" onAction="#startButtonPushed" prefHeight="54.0" prefWidth="160.0" text="Open Greenhouse" />
+      <Label layoutX="201.0" layoutY="43.0" prefHeight="54.0" prefWidth="198.0" text="Greenhouse" textFill="#5fab69">
+         <font>
+            <Font name="Baskerville Old Face" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="126.0" layoutY="158.0" text="To Plant a Garden Is to Believe in Tomorrow">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5490196347236633" green="0.8666666746139526" blue="0.6352941393852234" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
+   </children>
+</Pane>

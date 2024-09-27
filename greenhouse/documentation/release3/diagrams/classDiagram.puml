@@ -1,0 +1,198 @@
+@startuml Class Diagram
+class RemoteApp  {
+  + void start(Stage)
+  + {static} void main(String[])
+}
+
+class RemoteFrontPageController {
+  - Button start
+  - String isTest
+  - FXMLLoader loader
+  + void startButtonPushed(ActionEvent)
+  + String getIsTest()
+}
+
+class RemoteAppController {
+  - ListView<String> plantTable
+  - TextArea informationArea
+  - TextArea plantDescription
+  - Label plantNameLabel
+  - Button newPlant
+  - Button editPlant
+  - Button deletePlant
+  - ImageView monsteraPlant
+  - ChoiceBox<String> filterOptions
+  - String isTest
+  - PlantOverview plantOverview
+  - PlantPersistence persistence
+  - String pathname
+
+  + void initialize()
+  + void showOverview()
+  + void showFilteredOverview(PlantOverview)
+  + void filteredOverview()
+  + void initializeFilterOption()
+  + void selectedPlant()
+  + void openNewPlant(ActionEvent)
+  + void setPathname()
+  + String getPathname()
+  + String getIsTest()
+  + PlantOverview getPlantOverview()
+  # void openPopUp(Plant)
+  # void readFromFile()
+  # void writeToFile()
+}
+
+class RemoteFrontPageController {
+  - Buttton start
+  - String isTest
+  - FXMLLoader loader
+
+  + void startButtonPushed(ActionEvent)
+  + String getIsTest()
+  - greenhouseStatus(PlantOverview)
+}
+
+class RemoteNewPlantController {
+  - TextField nickname
+  - ChoiceBox<String> phaseOptions
+  - ChoiceBox<String> numberOfDays
+  - Button addPlant
+  - ImageView tallPlant1
+  - ImageView tallPlant2
+  - PlantOverview plantOverview
+  - FXMLLoader loader
+  - AppController appController
+
+  + void initialize()
+  + void initializeCheckboxes(ChoiceBox<String>)
+  + void addPlantButtonPushed(ActionEvent)
+  + void returnToApp(ActionEvent)
+  # void setAppController(AppController)
+}
+
+class RemotePopUpController {
+  - ChoiceBox<String> phaseOptions
+  - ChoiceBox<String> numberOfDays
+  - TextArea plantDescription
+  - Label plantNameLabel
+  - Text plantMood
+  - Button waterPlant
+  - AppController appController
+  - Plant selectedPlant
+  - PlantOverview plantOverview
+  - Stage currentStage
+
+  + void initialize()
+  + void initializeScene()
+  + void setSelectedPlant(Plant selectedPlant)
+  + void editPlant()
+  + void deletePlant()
+  + void waterPlant()
+  # void setStage(newStage)
+  # void setAppController(AppController controller)
+}
+
+class PlantOverview {
+  - List<Plant> plantOverview
+
+  + PlantOverview()
+  + PlantOverview(List<Plant>)
+  + void addPlant(Plant)
+  + void checkAddPlant(Plant)
+  + List<Plant> getPlantOverview()
+  + List<Plant> getPlantsByPredicate(Predicate<Plant>)
+  + List<String> getPlantNames()
+  + Plant getPlantByName(String)
+  + String editPlant(String, String, String)
+  + {static} PlantOverview filterPlantOverview(String, PlantOverview)
+  + void deletePlant(String)
+  + String status()
+  - boolean isPhaseDowngrade(Plant,String)
+}
+
+class Plant {
+  - String name
+  - String phase
+  - int waterInterval
+  - Date creationDate
+  - Date lastWatered
+
+  + Plant(String, String, int, Date, Date)
+  + Plant(String, String, int, Date)
+  + Plant(String, String, int)
+  + Plant(Plant)
+  + String getName()
+  + void setName(String)
+  + String getPhase()
+  + void setPhase(String)
+  + int getWaterInterval() 
+  + void setWaterInterval(int)
+  + Date getCreationDate()
+  + void setLastWatered(Date)
+  + Date getLastWatered()
+  + int lifeSpan()
+  + boolean needsWater()
+  + String toString()
+  + {static} int daysBetween(Date, Date)
+  + {static} String toStringDate(Date date)
+  + {static} Date fromStringToDate(String)
+}
+
+class PlantPersistence {
+  - ObjectMapper mapper
+  - Path saveFilePath
+  + PlantPersistence()
+  + PlantOverview readPlantOverview(Reader)
+  + void writePlantOverview(Writer, PlantOverview)
+  + {static} SimpleModule createJacksonModule()
+  + void setSaveFile()
+  + void savePlantOverview(PlantOverview)
+}
+
+class GreenhouseModule {
+  - {static} String NAME
+  + GreenhouseModule()
+}
+
+class PlantDeserializer{
+  + Plant deserialize(JsonParser, DeserializationContext)
+  + Plant deserialize(JsonNode)
+}
+
+class PlantOverviewDeserializer{
+  - PlantDeserializer PlantDeserializer
+  + PlantOverview deserialize(JsonParser, DeserializationContext)
+}
+
+class PlantOverviewSerializer{
+  + void serialize(PlantOverview, JsonGenerator, SerializerProvider)
+}
+
+class PlantSerializer{
+  + void serialize(Plant, JsonGenerator, SerializerProvider)
+}
+
+RemoteApp --> RemoteAppController
+RemoteApp --> RemoteFrontPageController
+RemoteApp --> RemoteNewPlantController
+RemoteApp --> RemotePopUpController
+
+PlantOverview --> Plant
+
+RemoteAppController --> RemotePlantOverviewAccess
+RemoteAppController --> RemotePlantPersistence
+
+RemoteAppController --> RemoteNewPlantController
+PlantOverview --> RemoteNewPlantController
+PlantPersistence --> RemoteNewPlantController
+
+RemotePlantOverviewAccess --> PlantOverviewController
+PlantOverviewController --> PlantOverviewService
+
+PlantOverviewApplication --> PlantOverviewController
+
+PlantOverviewService --> PlantPersistence
+
+
+@enduml

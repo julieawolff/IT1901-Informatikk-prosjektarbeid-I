@@ -1,0 +1,30 @@
+@startuml Component Architecture
+
+component core {
+	package greenhouse.core
+	package greenhouse.json
+}
+
+greenhouse.core ..> greenhouse.json
+component jackson {
+}
+
+greenhouse.json ..> jackson
+
+
+component fxui {
+	package greenhouse.ui
+}
+
+greenhouse.ui ..> greenhouse.core
+greenhouse.ui ..> greenhouse.json
+
+component javafx {
+	component fxml {
+	}
+}
+
+fxui ..> javafx
+fxui ..> fxml
+
+@enduml

@@ -1,0 +1,27 @@
+{
+  "Plants" : [ {
+    "Name" : "jennina",
+    "Phase" : "Seed",
+    "Water interval" : "4",
+    "Last watered" : "2023-10-30 11:02:19",
+    "Creation date" : "2023-10-30 14:51:52"
+  }, {
+    "Name" : "Jenny",
+    "Phase" : "Grown plant",
+    "Water interval" : "7",
+    "Last watered" : "2023-11-06 11:02:51",
+    "Creation date" : "2023-11-06 11:02:51"
+  }, {
+    "Name" : "Julie",
+    "Phase" : "Grown plant",
+    "Water interval" : "6",
+    "Last watered" : "2023-10-06 11:02:57",
+    "Creation date" : "2023-11-06 11:02:57"
+  }, {
+    "Name" : "Anine",
+    "Phase" : "Grown plant",
+    "Water interval" : "6",
+    "Last watered" : "2023-11-06 11:04:04",
+    "Creation date" : "2023-11-06 11:04:04"
+  } ]
+}
